@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel de Usinagem - Granaco</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #121212;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #1f1f1f;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #ffa500;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: #ffa500;
+      letter-spacing: 1px;
+    }
+
+    header .data {
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+
+    main {
+      padding: 20px 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #1e1e1e;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(255, 165, 0, 0.1);
+      border-left: 6px solid transparent;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 25px rgba(255, 165, 0, 0.2);
+    }
+
+    .maquina {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #ffa500;
+      margin-bottom: 5px;
+    }
+
+    .status {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .status span {
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 8px;
+    }
+
+    .status .producao { background-color: #f1c40f; color: #000; }
+    .status .finalizada { background-color: #27ae60; }
+    .status .parada { background-color: #e74c3c; }
+
+    .info {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #ddd;
+    }
+
+    .progresso-container {
+      margin-top: 10px;
+      background: #333;
+      border-radius: 10px;
+      height: 18px;
+      overflow: hidden;
+    }
+
+    .progresso-barra {
+      height: 100%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #ffa500, #ffcc66);
+      width: 0%;
+      transition: width 1.2s ease-in-out;
+    }
+
+    .indicadores {
+      background-color: #1f1f1f;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-top: 2px solid #ffa500;
+    }
+
+    .indicador {
+      text-align: center;
+    }
+
+    .indicador h3 {
+      font-size: 1rem;
+      color: #bbb;
+      margin-bottom: 5px;
+    }
+
+    .indicador span {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    .verde { color: #2ecc71; }
+    .vermelho { color: #e74c3c; }
+    .amarelo { color: #f1c40f; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>GRANACO • USINAGEM</h1>
+    <div class="data">Data: 06/10/2025</div>
+  </header>
+
+  <main>
+    <div class="card" style="border-left-color:#f1c40f;">
+      <div class="maquina">CUV-01</div>
+      <div class="status"><span class="producao">Produzindo</span></div>
+      <div class="info">
+        Peça: 27324<br />
+        Progresso: 53,5%<br />
+        Meta: 9,5 p/h<br />
+        OEE: <span class="vermelho">6%</span>
+      </div>
+      <div class="progresso-container">
+        <div class="progresso-barra" style="width:53.5%;"></div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color:#27ae60;">
+      <div class="maquina">CUH-02</div>
+      <div class="status"><span class="finalizada">Finalizada</span></div>
+      <div class="info">
+        Peça: 27498<br />
+        Progresso: 100%<br />
+        Meta: 4,0 p/h<br />
+        OEE: <span class="verde">95%</span>
+      </div>
+      <div class="progresso-container">
+        <div class="progresso-barra" style="width:100%;"></div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color:#e74c3c;">
+      <div class="maquina">CUH-03</div>
+      <div class="status"><span class="parada">Parada</span></div>
+      <div class="info">
+        Peça: 25938<br />
+        Progresso: 0%<br />
+        Meta: 2,0 p/h<br />
+        OEE: <span class="vermelho">0%</span>
+      </div>
+      <div class="progresso-container">
+        <div class="progresso-barra" style="width:0%;"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="indicadores">
+    <div class="indicador">
+      <h3>DISPONIBILIDADE</h3>
+      <span class="verde">100%</span>
+    </div>
+    <div class="indicador">
+      <h3>DESEMPENHO</h3>
+      <span class="vermelho">6%</span>
+    </div>
+    <div class="indicador">
+      <h3>QUALIDADE</h3>
+      <span class="verde">95%</span>
+    </div>
+    <div class="indicador">
+      <h3>EFICIÊNCIA GERAL</h3>
+      <span class="amarelo">6%</span>
+    </div>
+  </footer>
+</body>
+</html>
