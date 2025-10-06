@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Painel de Usinagem - Granaco</title>
+  <title>Dashboard Usinagem - Granaco</title>
 
   <style>
     * {
@@ -12,25 +12,25 @@
     }
 
     body {
-      background-color: #121212;
+      background-color: #0f0f0f;
       color: #fff;
       margin: 0;
       padding: 0;
     }
 
     header {
-      background-color: #1f1f1f;
+      background-color: #1b1b1b;
       padding: 20px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 2px solid #ffa500;
+      border-bottom: 3px solid #f39c12;
     }
 
     header h1 {
+      color: #f39c12;
       font-size: 1.8rem;
-      color: #ffa500;
-      letter-spacing: 1px;
+      font-weight: 600;
     }
 
     header .data {
@@ -41,17 +41,17 @@
     main {
       padding: 20px 40px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
     }
 
     .card {
-      background-color: #1e1e1e;
-      border-radius: 14px;
+      background-color: #1a1a1a;
+      border-radius: 16px;
       padding: 20px;
-      box-shadow: 0 0 15px rgba(255, 165, 0, 0.1);
-      border-left: 6px solid transparent;
-      transition: all 0.3s ease-in-out;
+      border-left: 6px solid #444;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 15px rgba(255, 165, 0, 0.08);
     }
 
     .card:hover {
@@ -61,14 +61,14 @@
 
     .maquina {
       font-size: 1.4rem;
-      font-weight: bold;
-      color: #ffa500;
+      font-weight: 700;
+      color: #f39c12;
       margin-bottom: 5px;
     }
 
     .status {
       font-size: 1rem;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .status span {
@@ -77,9 +77,9 @@
       border-radius: 8px;
     }
 
-    .status .producao { background-color: #f1c40f; color: #000; }
-    .status .finalizada { background-color: #27ae60; }
-    .status .parada { background-color: #e74c3c; }
+    .producao { background-color: #f1c40f; color: #000; }
+    .finalizada { background-color: #27ae60; color: #fff; }
+    .parada { background-color: #e74c3c; color: #fff; }
 
     .info {
       font-size: 0.95rem;
@@ -88,28 +88,28 @@
     }
 
     .progresso-container {
-      margin-top: 10px;
+      margin-top: 12px;
       background: #333;
       border-radius: 10px;
-      height: 18px;
+      height: 16px;
       overflow: hidden;
     }
 
     .progresso-barra {
       height: 100%;
       border-radius: 10px;
-      background: linear-gradient(90deg, #ffa500, #ffcc66);
+      background: linear-gradient(90deg, #f39c12, #ffd166);
       width: 0%;
-      transition: width 1.2s ease-in-out;
+      transition: width 1s ease-in-out;
     }
 
-    .indicadores {
-      background-color: #1f1f1f;
-      padding: 15px 40px;
+    footer {
+      background-color: #1b1b1b;
+      padding: 20px 40px;
+      border-top: 3px solid #f39c12;
       display: flex;
       justify-content: space-around;
       align-items: center;
-      border-top: 2px solid #ffa500;
     }
 
     .indicador {
@@ -117,13 +117,13 @@
     }
 
     .indicador h3 {
-      font-size: 1rem;
       color: #bbb;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
+      font-size: 1rem;
     }
 
     .indicador span {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: bold;
     }
 
@@ -132,21 +132,22 @@
     .amarelo { color: #f1c40f; }
   </style>
 </head>
-
 <body>
   <header>
-    <h1>GRANACO • USINAGEM</h1>
+    <h1>📊 GRANACO – USINAGEM</h1>
     <div class="data">Data: 06/10/2025</div>
   </header>
 
   <main>
+    <!-- CUV-01 -->
     <div class="card" style="border-left-color:#f1c40f;">
       <div class="maquina">CUV-01</div>
       <div class="status"><span class="producao">Produzindo</span></div>
       <div class="info">
-        Peça: 27324<br />
-        Progresso: 53,5%<br />
-        Meta: 9,5 p/h<br />
+        Peça: 27324<br>
+        Produzido: 146,5 / 200<br>
+        Progresso: 53,5%<br>
+        Meta: 9,5 p/h<br>
         OEE: <span class="vermelho">6%</span>
       </div>
       <div class="progresso-container">
@@ -154,13 +155,31 @@
       </div>
     </div>
 
+    <!-- CUV-02 -->
+    <div class="card" style="border-left-color:#e74c3c;">
+      <div class="maquina">CUV-02</div>
+      <div class="status"><span class="parada">Parada</span></div>
+      <div class="info">
+        Peça: 26580<br>
+        Produzido: 30 / 240<br>
+        Progresso: 12,5%<br>
+        Meta: 45,1 p/h<br>
+        OEE: <span class="vermelho">0%</span>
+      </div>
+      <div class="progresso-container">
+        <div class="progresso-barra" style="width:12.5%;"></div>
+      </div>
+    </div>
+
+    <!-- CUH-01 -->
     <div class="card" style="border-left-color:#27ae60;">
-      <div class="maquina">CUH-02</div>
+      <div class="maquina">CUH-01</div>
       <div class="status"><span class="finalizada">Finalizada</span></div>
       <div class="info">
-        Peça: 27498<br />
-        Progresso: 100%<br />
-        Meta: 4,0 p/h<br />
+        Peça: 26578<br>
+        Produzido: 240 / 240<br>
+        Progresso: 100%<br>
+        Meta: 45,1 p/h<br>
         OEE: <span class="verde">95%</span>
       </div>
       <div class="progresso-container">
@@ -168,22 +187,56 @@
       </div>
     </div>
 
+    <!-- CUH-02 -->
+    <div class="card" style="border-left-color:#27ae60;">
+      <div class="maquina">CUH-02</div>
+      <div class="status"><span class="finalizada">Finalizada</span></div>
+      <div class="info">
+        Peça: 27498<br>
+        Produzido: 4 / 4<br>
+        Progresso: 100%<br>
+        Meta: 4,0 p/h<br>
+        OEE: <span class="verde">95%</span>
+      </div>
+      <div class="progresso-container">
+        <div class="progresso-barra" style="width:100%;"></div>
+      </div>
+    </div>
+
+    <!-- CUH-03 -->
     <div class="card" style="border-left-color:#e74c3c;">
       <div class="maquina">CUH-03</div>
       <div class="status"><span class="parada">Parada</span></div>
       <div class="info">
-        Peça: 25938<br />
-        Progresso: 0%<br />
-        Meta: 2,0 p/h<br />
+        Peça: 25938<br>
+        Produzido: 0 / 90<br>
+        Progresso: 0%<br>
+        Meta: 2,0 p/h<br>
         OEE: <span class="vermelho">0%</span>
       </div>
       <div class="progresso-container">
         <div class="progresso-barra" style="width:0%;"></div>
       </div>
     </div>
+
+    <!-- CUH-04 -->
+    <div class="card" style="border-left-color:#e74c3c;">
+      <div class="maquina">CUH-04</div>
+      <div class="status"><span class="parada">Parada</span></div>
+      <div class="info">
+        Peça: 27278<br>
+        Produzido: 10 / 35<br>
+        Progresso: 28%<br>
+        Meta: 1,4 p/h<br>
+        OEE: <span class="vermelho">0%</span>
+      </div>
+      <div class="progresso-container">
+        <div class="progresso-barra" style="width:28%;"></div>
+      </div>
+    </div>
   </main>
 
-  <footer class="indicadores">
+  <footer>
     <div class="indicador">
       <h3>DISPONIBILIDADE</h3>
       <span class="verde">100%</span>
@@ -197,9 +250,12 @@
       <span class="verde">95%</span>
     </div>
     <div class="indicador">
-      <h3>EFICIÊNCIA GERAL</h3>
+      <h3>OEE TOTAL</h3>
       <span class="amarelo">6%</span>
     </div>
   </footer>
 </body>
 </html>
+
+</html>
+
